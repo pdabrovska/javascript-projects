@@ -1,0 +1,34 @@
+body{
+  font-family: Arial;
+  background-color: rgb(20, 20, 20);
+}
+
+button{
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  background-color: rgb(61, 61, 61);
+  color: white;
+  font-size: 26px;
+  border: none;
+  margin-right: 5px;
+}
+
+.symbol{
+  background-color: rgb(234, 163, 29);
+}
+
+.clear{
+  font-size: 16px;
+}
+
+p{
+  margin-top: 2px;
+}
+
+.js-result{
+  padding-top: 4px;
+  margin: 0;
+  color: white;
+  font-size: 48px;
+}
