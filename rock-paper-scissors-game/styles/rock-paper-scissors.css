@@ -1,0 +1,69 @@
+body{
+  background-color: rgb(27, 26, 26);
+}
+
+p{
+  color: rgb(245, 236, 236);
+  font-weight: bold;
+  font-size: 30px;
+  font-family: Arial;
+}
+
+button{
+  background-color: rgb(27, 26, 26);
+  border: 3px solid rgb(245, 236, 236);
+  border-radius: 80px;
+  padding: 31px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.emoji{
+  height: 50px;
+}
+
+.reset, .auto-play-button{
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 0;
+  font-size: 15px;
+  margin-right: 2px;
+}
+
+.js-result{
+  margin-top: 50px;
+  font-size: 24px;
+}
+.js-moves, .js-score{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.yes-button, .no-button{
+  font-size: 15px;
+  border: none;
+  color: black;
+  background-color: white;
+  padding: 7px 15px;
+  border-radius: 0px;
+  margin-right: 2px;
+}
+
+.reset-message{
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.instructions, .instructions2{
+  font-size: 14px;
+  font-weight: 500;
+  word-spacing: 2px;
+  margin-bottom: 0px;
+}
+
+.instructions2{
+  margin-top: 0px;
+  margin-left: 15px;
+}
