@@ -96,6 +96,7 @@ function playerMove(){
         if (result === false) {
           setTimeout(function(){computerMove(); checkResult();}, 800);
         };
+        setTimeout(function(){result = false}, 3000);
       }
       
     });
@@ -157,7 +158,6 @@ function blockMoves(time){
 };
 
 function checkResult(){
-  let nullCount = 9;
   let playerLetter, computerLetter; 
   if(playerMoveId === 1){
     playerLetter = 'X';
@@ -170,33 +170,51 @@ function checkResult(){
     if(gameBoard[0][0] === playerMoveId && gameBoard[0][1] === playerMoveId && gameBoard[0][2] === playerMoveId){
       win(playerLetter);     
       return updateScoreElement();
-    } else if(gameBoard[0][i] === playerMoveId && gameBoard[1][i] === playerMoveId && gameBoard[2][i] === playerMoveId){
+    }
+    if(gameBoard[0][i] === playerMoveId && gameBoard[1][i] === playerMoveId && gameBoard[2][i] === playerMoveId){
       win(playerLetter);         
       return updateScoreElement();
-    }else if(gameBoard[0][0] === playerMoveId && gameBoard[1][1] === playerMoveId && gameBoard[2][2] === playerMoveId){
+    }
+    if(gameBoard[0][0] === playerMoveId && gameBoard[1][1] === playerMoveId && gameBoard[2][2] === playerMoveId){
       win(playerLetter);        
       return updateScoreElement();
-    }else if(gameBoard[0][2] === playerMoveId && gameBoard[1][1] === playerMoveId && gameBoard[2][0] === playerMoveId){
+    }
+    if(gameBoard[0][2] === playerMoveId && gameBoard[1][1] === playerMoveId && gameBoard[2][0] === playerMoveId){
       win(playerLetter);           
       return updateScoreElement();
     } 
     
-    else if(gameBoard[i][0] === computerMoveId && gameBoard[i][1] === computerMoveId && gameBoard[i][2] === computerMoveId){
+    if(gameBoard[i][0] === computerMoveId && gameBoard[i][1] === computerMoveId && gameBoard[i][2] === computerMoveId){
       loose(computerLetter);
       return updateScoreElement();
-    }else if(gameBoard[0][i] === computerMoveId && gameBoard[1][i] === computerMoveId && gameBoard[2][i] === computerMoveId){
+    }
+    if(gameBoard[0][i] === computerMoveId && gameBoard[1][i] === computerMoveId && gameBoard[2][i] === computerMoveId){
       loose(computerLetter);
       return updateScoreElement();
-    }else if(gameBoard[0][0] === computerMoveId && gameBoard[1][1] === computerMoveId && gameBoard[2][2] === computerMoveId){
+    }
+    if(gameBoard[0][0] === computerMoveId && gameBoard[1][1] === computerMoveId && gameBoard[2][2] === computerMoveId){
       loose(computerLetter);
       return updateScoreElement();
-    }else if(gameBoard[0][2] === computerMoveId && gameBoard[1][1] === computerMoveId && gameBoard[2][0] === computerMoveId){
+    }
+    if(gameBoard[0][2] === computerMoveId && gameBoard[1][1] === computerMoveId && gameBoard[2][0] === computerMoveId){
       loose(computerLetter);
       return updateScoreElement();
-    } 
+    }
 
-    else if(nullCount === 0){
-      
+    if(gameBoard[0][0] !== 0 && gameBoard[0][1] !== 0 && gameBoard[0][2] !== 0 && gameBoard[1][0] !== 0 && gameBoard[1][1] !== 0 &&gameBoard[1][2] !== 0 && gameBoard[2][0] !== 0 &&gameBoard[1][1] !== 0 &&gameBoard[2][2] !== 0){
+      result = true; 
+      const resultMessage = document.querySelector('.js-message-player');
+      resultMessage.innerHTML = `
+      <div class="win-or-loose-info">
+      <p>Draw</p<
+      </div>`;
+      setTimeout(()=>{resultMessage.innerHTML =''}, 4000);
+
+      gameBoard = [[0,0,0],
+                  [0,0,0],
+                  [0,0,0]];
+      localStorage.setItem('gameBoard', JSON.stringify(gameBoard));            
+      renderTheBoard();
     }
   }
 };
