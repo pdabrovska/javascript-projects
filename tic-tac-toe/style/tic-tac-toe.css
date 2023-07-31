@@ -1,0 +1,65 @@
+body{
+  font-family: Arial;
+}
+
+.player-message, .win-or-loose-info{
+  background-color: grey;
+  height: 180px;
+  position: absolute;
+  top: 180px;
+  right: 0;
+  left: 0;
+  font-size: 26px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.win-or-loose-info{
+  height: 80px;
+}
+
+.choose-button{
+padding: 20px 25px;
+margin-right: 18px;
+font-size: 26px;
+font-weight: 700;
+cursor: pointer;
+}
+
+
+.game-sheet{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game{
+  display: grid;
+  grid-template-rows: 150px 150px 150px;
+}
+
+.game-row{
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+}
+
+.summary{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.scores{
+  margin-right: 200px;
+  letter-spacing: 1px;
+}
+
+.reset-button{
+  letter-spacing: 1px;
+  padding: 1px 22px;
+}
