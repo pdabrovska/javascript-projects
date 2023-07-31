@@ -12,7 +12,7 @@ let result = false;
 let playerMoveId = JSON.parse(localStorage.getItem('player-move')) || choosePlayer();
 let computerMoveId = JSON.parse(localStorage.getItem('computer-move'));
 renderTheBoard();
-blockMoves(1000);
+//blockMoves(1000);
 playerMove();
 
 updateScoreElement();
@@ -21,7 +21,7 @@ function renderTheBoard() {
   document.querySelectorAll('.js-sign-button').forEach((signButton, index) => {
    if (index <=2 ) {
       if(gameBoard[0][index] === 0) {
-        signButton.innerHTML = 'null';
+        signButton.innerHTML = '';
       } else if(gameBoard[0][index] === 1){
         signButton.innerHTML = 'X';
       } else if (gameBoard[0][index] === 2){
@@ -29,7 +29,7 @@ function renderTheBoard() {
       }
     } else if (index > 2 && index <=5 ) {
       if(gameBoard[1][index - 3] === 0) {
-        signButton.innerHTML = 'null';
+        signButton.innerHTML = '';
       } else if(gameBoard[1][index - 3] === 1){
         signButton.innerHTML = 'X';
       } else if (gameBoard[1][index - 3] === 2){
@@ -37,7 +37,7 @@ function renderTheBoard() {
       }
     } else if (index > 5 && index <=8) {
       if(gameBoard[2][index - 6] === 0) {
-        signButton.innerHTML = 'null';
+        signButton.innerHTML = '';
       } else if(gameBoard[2][index - 6] === 1){
         signButton.innerHTML = 'X';
       } else if (gameBoard[2][index - 6] === 2){
@@ -80,7 +80,7 @@ function choosePlayer(){
 function playerMove(){
   document.querySelectorAll('.js-sign-button').forEach((signButton, index) => {
     signButton.addEventListener('click', () =>{
-      if(signButton.innerHTML === 'null'){
+      if(signButton.innerHTML === ''){
         if (index <= 2){
           gameBoard[0][index] = playerMoveId;
           localStorage.setItem('gameBoard', JSON.stringify(gameBoard));
@@ -94,6 +94,7 @@ function playerMove(){
         renderTheBoard();
         checkResult();
         if (result === false) {
+          blockBoard(1000);
           setTimeout(function(){computerMove(); checkResult();}, 800);
         };
         setTimeout(function(){result = false}, 3000);
@@ -138,12 +139,12 @@ function computerMove(){
 
   renderTheBoard();
 };
-
+/*
 function blockMoves(time){
   const buttons = document.querySelectorAll('.js-sign-button');
   function handleClick(){
     buttons.forEach(button => {
-      button.disabled = true
+      button.disabled = true;
       setTimeout(()=>{button.disabled = false}, time);
     })
   };
@@ -155,7 +156,15 @@ function blockMoves(time){
       }
     });
   });
-};
+};*/
+
+function blockBoard(time){
+  const buttons = document.querySelectorAll('.js-sign-button');
+    buttons.forEach(button =>{
+      button.disabled = true;
+      setTimeout(()=>{button.disabled = false}, time);
+    })
+}
 
 function checkResult(){
   let playerLetter, computerLetter; 
@@ -258,6 +267,7 @@ function win(player){
               [0,0,0]];
   localStorage.setItem('gameBoard', JSON.stringify(gameBoard));            
   renderTheBoard();
+  blockBoard(4100);
 }
 
 function loose(player){
@@ -275,4 +285,5 @@ function loose(player){
               [0,0,0]];
   localStorage.setItem('gameBoard', JSON.stringify(gameBoard));
   renderTheBoard();
+  blockBoard(4100);
 }
